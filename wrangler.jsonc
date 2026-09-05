@@ -1,0 +1,15 @@
+{
+  "name": "sentialab-website",
+  "account_id": "b797249254b1f97e9167341446d7b871",
+  "compatibility_date": "2026-09-05",
+  "workers_dev": false,
+  "assets": {
+    "directory": "./public"
+  },
+  "routes": [
+    {
+      "pattern": "sentialab.org",
+      "custom_domain": true
+    }
+  ]
+}

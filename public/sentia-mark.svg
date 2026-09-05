@@ -1,0 +1,31 @@
+<svg width="300" height="440" viewBox="0 0 300 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topFace" x1="57" y1="76" x2="238" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C8C9CB"/>
+      <stop offset="1" stop-color="#F4F4F3"/>
+    </linearGradient>
+    <linearGradient id="leftFace" x1="56" y1="88" x2="141" y2="172" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A8A9AC"/>
+      <stop offset="1" stop-color="#D7D8D9"/>
+    </linearGradient>
+    <linearGradient id="centerFace" x1="62" y1="201" x2="248" y2="231" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#242528"/>
+      <stop offset="1" stop-color="#595A5E"/>
+    </linearGradient>
+    <linearGradient id="rightFace" x1="154" y1="152" x2="253" y2="292" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#535458"/>
+      <stop offset="1" stop-color="#B9BABC"/>
+    </linearGradient>
+    <linearGradient id="bottomFace" x1="81" y1="361" x2="242" y2="292" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F0EF"/>
+      <stop offset="1" stop-color="#C5C6C8"/>
+    </linearGradient>
+  </defs>
+  <path d="M52 96L241 0V99L151 147L52 96Z" fill="url(#topFace)"/>
+  <path d="M52 96L151 147L52 198V96Z" fill="url(#leftFace)"/>
+  <path d="M52 198L151 147L262 211L151 267L52 198Z" fill="url(#centerFace)"/>
+  <path d="M151 147L262 211V315L151 267V147Z" fill="url(#rightFace)"/>
+  <path d="M151 267L262 315L68 414V331L151 267Z" fill="url(#bottomFace)"/>
+  <path d="M52 96L151 147L262 211" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="1"/>
+  <path d="M52 198L151 267L262 315" stroke="#FFFFFF" stroke-opacity=".11" stroke-width="1"/>
+</svg>
