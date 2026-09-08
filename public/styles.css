@@ -373,239 +373,21 @@ h1 em {
   position: relative;
   justify-self: end;
   width: min(100%, 620px);
-  aspect-ratio: 620 / 570;
+  aspect-ratio: 839 / 700;
   margin-right: -12px;
 }
 
-.orbital-svg {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
+.hero-artwork {
+  overflow: hidden;
+}
+
+.hero-artwork-image {
+  display: block;
   width: 100%;
   height: 100%;
-  overflow: visible;
-}
-
-.orbital-axis {
-  stroke: rgba(231, 233, 237, 0.15);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.orbital-axis-vertical {
-  stroke: rgba(231, 233, 237, 0.12);
-}
-
-.orbital-guide,
-.orbital-path {
-  fill: none;
-  vector-effect: non-scaling-stroke;
-}
-
-.orbital-guide {
-  stroke: rgba(174, 185, 255, 0.46);
-  stroke-dasharray: 1 7;
-  stroke-linecap: round;
-  stroke-width: 1;
-}
-
-.orbital-path {
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.orbital-path-outer {
-  stroke: rgba(174, 185, 255, 0.86);
-  stroke-width: 1.15;
-}
-
-.orbital-path-middle {
-  stroke: rgba(142, 185, 212, 0.62);
-  stroke-width: 1;
-}
-
-.orbital-path-inner {
-  stroke: rgba(231, 233, 237, 0.47);
-  stroke-width: 1;
-}
-
-.orbital-node {
-  stroke: rgba(231, 233, 237, 0.72);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.orbital-node-primary {
-  fill: var(--acid);
-  filter: drop-shadow(0 0 6px rgba(174, 185, 255, 0.42));
-}
-
-.orbital-node-muted {
-  fill: var(--blue);
-}
-
-.orbital-core-marker {
-  fill: rgba(174, 185, 255, 0.9);
-  filter: drop-shadow(0 0 5px rgba(174, 185, 255, 0.28));
-}
-
-.orbital-nucleus {
-  position: absolute;
-  z-index: 2;
-  top: 50.3%;
-  left: 49.4%;
-  display: grid;
-  place-items: center;
-  width: 78px;
-  height: 78px;
-  overflow: hidden;
-  border: 1px solid rgba(231, 233, 237, 0.54);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 35% 31%, rgba(243, 244, 246, 0.34), transparent 7%),
-    radial-gradient(circle at 39% 37%, rgba(174, 185, 255, 0.18), transparent 31%),
-    radial-gradient(circle at 57% 61%, rgba(4, 5, 8, 0.95), rgba(17, 19, 24, 0.87) 68%);
-  box-shadow:
-    inset 10px 4px 20px rgba(255, 255, 255, 0.04),
-    inset -11px -10px 18px rgba(0, 0, 0, 0.5),
-    0 12px 36px rgba(0, 0, 0, 0.28);
-  transform: translate(-50%, -50%);
-}
-
-.orbital-nucleus::before,
-.orbital-nucleus::after {
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(231, 233, 237, 0.13);
-  border-radius: inherit;
-  content: "";
-}
-
-.orbital-nucleus::after {
-  inset: auto;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(243, 244, 246, 0.84);
-  box-shadow: 0 0 10px rgba(174, 185, 255, 0.74);
-  transform: translate(-50%, -50%);
-}
-
-.core-mark {
-  position: relative;
-  z-index: 1;
-  width: 19px;
-  height: 30px;
-  object-fit: contain;
-  filter: grayscale(1) brightness(1.62);
-  opacity: 0.68;
-}
-
-.visual-rule {
-  position: absolute;
-  z-index: 2;
-  width: 27px;
-  height: 1px;
-  background: rgba(231, 233, 237, 0.26);
-}
-
-.visual-rule-top {
-  top: 8%;
-  right: 24%;
-}
-
-.visual-rule-bottom {
-  right: 26%;
-  bottom: 5%;
-}
-
-.visual-index {
-  z-index: 2;
-  position: absolute;
-  font-family: var(--mono);
-  font-size: 0.49rem;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.visual-index-one {
-  top: 22%;
-  left: 9%;
-  color: #c5cbeb;
-}
-
-.visual-index-two {
-  top: 42%;
-  right: 1%;
-  color: #c5cbeb;
-}
-
-.visual-index-three {
-  bottom: 25%;
-  left: 3%;
-  color: #d5d7dd;
-}
-
-.visual-label,
-.visual-coordinate,
-.visual-cross {
-  z-index: 2;
-  position: absolute;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.53rem;
-  letter-spacing: 0.09em;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
-.visual-label-top {
-  top: 7%;
-  right: 4%;
-  left: auto;
-  color: #c5cbeb;
-}
-
-.visual-label-bottom {
-  right: 4%;
-  bottom: 3%;
-  color: rgba(231, 233, 237, 0.64);
-  text-align: right;
-}
-
-.visual-coordinate {
-  color: rgba(174, 185, 255, 0.76);
-}
-
-.coordinate-one {
-  top: auto;
-  right: 4%;
-  bottom: 18%;
-}
-
-.coordinate-two {
-  right: 4%;
-  bottom: 13.5%;
-  left: auto;
-}
-
-.visual-cross {
-  color: var(--acid);
-  font-size: 1rem;
-}
-
-.cross-one {
-  top: 18%;
-  right: 14%;
-}
-
-.cross-two {
-  right: 4%;
-  bottom: 7%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(2) contrast(1.14) saturate(0.92);
 }
 
 .signal-strip {
@@ -2496,16 +2278,8 @@ h1 em {
     margin-left: -8px;
   }
 
-  .orbital-nucleus {
-    width: 64px;
-    height: 64px;
-  }
-
-  .visual-label,
-  .visual-coordinate,
-  .visual-cross,
-  .visual-index {
-    font-size: 0.43rem;
+  .hero-artwork {
+    margin-top: 6px;
   }
 
   .signal-track span {
