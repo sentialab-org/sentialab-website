@@ -8,9 +8,10 @@
       content="AELIA is SENTIA's experimental architecture for persistent autonomous artificial entities."
     />
     <meta name="theme-color" content="#111318" />
-    <title>AELIA — Autonomous Embodied Life & Intelligence Architecture</title>
+    <title>AELIA — Autonomous Embodied Life &amp; Intelligence Architecture</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="visual-system.css" />
   </head>
 
   <body class="aelia-page">
@@ -66,20 +67,16 @@
           </p>
         </div>
 
-        <div class="aelia-hero-diagram" aria-label="AELIA continuous life loop" role="img">
-          <span class="aelia-diagram-label label-environment">ENVIRONMENT</span>
-          <span class="aelia-diagram-label label-perception">01 / PERCEPTION</span>
-          <span class="aelia-diagram-label label-action">03 / ACTION</span>
-          <div class="aelia-diagram-path path-top"></div>
-          <div class="aelia-diagram-path path-bottom"></div>
-          <div class="aelia-diagram-core">
-            <img src="sentia-mark.svg" alt="" />
-            <strong>COGNITIVE<br />RUNTIME</strong>
-            <span>02 / INTERPRET</span>
+        <figure class="specimen-figure aelia-hero-specimen" data-artwork>
+          <div class="figure-topline"><span>Identity / In formation</span><span>A / 001</span></div>
+          <div class="specimen-stage">
+            <img class="specimen-art art-motion" src="assets/aelia-emergence.png" alt="An open, luminous membrane with layered folds, an abstract study of emerging identity" width="1254" height="1254" fetchpriority="high" decoding="async" />
+            <span class="specimen-callout callout-memory" aria-hidden="true">Memory</span>
+            <span class="specimen-callout callout-agency" aria-hidden="true">Becoming</span>
+            <span class="specimen-measure" aria-hidden="true"></span>
           </div>
-          <span class="aelia-diagram-return">OBSERVE CONSEQUENCES ↺</span>
-          <span class="aelia-diagram-continue">CONTINUE</span>
-        </div>
+          <figcaption class="figure-caption"><span>Continuity through change</span><span>Experimental system</span></figcaption>
+        </figure>
       </section>
 
       <div class="signal-strip" aria-label="AELIA principles">
@@ -133,7 +130,7 @@
           </p>
         </div>
 
-        <ol class="life-loop-list">
+        <ol class="life-loop-list" data-artwork>
           <li><span>01</span><strong>Perceive</strong><p>Notice an event, person, message, or environmental change.</p></li>
           <li><span>02</span><strong>Interpret</strong><p>Relate what happened to context, history, and uncertainty.</p></li>
           <li><span>03</span><strong>Remember</strong><p>Store or revise traces that may matter later.</p></li>
@@ -161,7 +158,7 @@
           </p>
         </div>
 
-        <div class="cognitive-map" role="img" aria-label="AELIA cognitive runtime architecture">
+        <div class="cognitive-map" data-artwork role="group" aria-label="AELIA cognitive runtime architecture">
           <div class="map-terminal terminal-input">ENVIRONMENT<br /><span>events / people / messages</span></div>
           <div class="map-connector connector-down">↓</div>
           <div class="cognitive-runtime-box">
@@ -204,11 +201,17 @@
               appropriate, and consistent with its model of the people involved.
             </p>
           </div>
-          <div class="social-problem-questions" aria-label="Questions used to frame social interaction">
+          <div class="social-context">
+            <div class="social-context-art" data-artwork aria-hidden="true">
+              <img class="relational-art art-motion" src="assets/relational-field.png" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+              <span class="figure-topline">Relationships / Context / Timing</span>
+            </div>
+            <div class="social-problem-questions" aria-label="Questions used to frame social interaction">
             <div><span>01</span><strong>What is happening?</strong><p>Conversation context and relevance.</p></div>
             <div><span>02</span><strong>Who is speaking to whom?</strong><p>Relationships, hierarchy, and intent.</p></div>
             <div><span>03</span><strong>Why now?</strong><p>Timing, interruption cost, and social state.</p></div>
             <div><span>04</span><strong>Does it fit who I am?</strong><p>Persona expressed through decisions, not prompts.</p></div>
+            </div>
           </div>
         </div>
       </section>
@@ -282,7 +285,7 @@
       <div class="footer-bottom">
         <span>© <span data-year></span> SENTIA LAB</span>
         <span>EXPERIMENTAL SYSTEM / IN PROGRESS</span>
-        <span>DESIGNED TO CONTINUE</span>
+        <button class="motion-toggle" type="button" data-motion-toggle hidden>Pause motion</button>
       </div>
     </footer>
 

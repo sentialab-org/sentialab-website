@@ -22,31 +22,51 @@ const revealTargets = document.querySelectorAll(
   ].join(", ")
 );
 const systemNodes = document.querySelectorAll(".system-node");
+const systemMap = document.querySelector(".system-map");
+const systemReadout = document.querySelector(".system-readout");
 const readoutLabel = document.querySelector(".readout-label");
 const readout = document.querySelector("[data-readout]");
+const runtimeIndex = document.querySelector("[data-runtime-index]");
+const runtimeLayer = document.querySelector("[data-runtime-layer]");
+const fieldNodes = Array.from(document.querySelectorAll("[data-field-layer]"));
+const artworkFigures = Array.from(document.querySelectorAll("[data-artwork]"));
+const motionToggles = Array.from(document.querySelectorAll("[data-motion-toggle]"));
 
 const layerContent = {
   memory: {
     label: "CURRENT LAYER / MEMORY & IDENTITY",
     text: "Memory gives identity a past. It includes episodic, semantic, social, and relational traces that influence belief, state, decision, and future memory.",
+    index: "01",
+    runtimeLayer: "memory / identity",
   },
   belief: {
     label: "CURRENT LAYER / WORLD & BELIEF",
     text: "Working models of what may be happening in the world, what other people may intend, and what the system currently takes to be true — provisionally and with uncertainty.",
+    index: "02",
+    runtimeLayer: "world / belief",
   },
   state: {
     label: "CURRENT LAYER / INTERNAL STATE",
     text: "A moving configuration of attention, priorities, goals, familiarity, and social stance that changes which actions become likely in a given moment.",
+    index: "03",
+    runtimeLayer: "internal state",
   },
   social: {
     label: "CURRENT LAYER / SOCIAL MODEL",
     text: "A model of people, relationships, group context, and perspective. It helps frame who is speaking to whom, whether intervention matters, and what a response could mean.",
+    index: "04",
+    runtimeLayer: "social model",
   },
   decision: {
     label: "CURRENT LAYER / DECISION & ACTION",
     text: "The system coordinates memory, belief, state, social context, goals, and persona to decide whether to act, what action to take, and why this moment warrants it.",
+    index: "05",
+    runtimeLayer: "decision / action",
   },
 };
+
+let systemReadoutTimer;
+let systemReadoutFrame;
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
@@ -108,15 +128,95 @@ if ("IntersectionObserver" in window) {
   revealTargets.forEach((target) => target.classList.add("is-visible"));
 }
 
-systemNodes.forEach((node) => {
-  node.addEventListener("click", () => {
-    const layer = node.dataset.layer;
-    const content = layerContent[layer];
-    if (!content || !readoutLabel || !readout) return;
+function activateSystemLayer(node, animate = true) {
+  const layer = node.dataset.layer;
+  const content = layerContent[layer];
+  if (!content) return;
 
-    systemNodes.forEach((item) => item.classList.remove("is-active"));
-    node.classList.add("is-active");
-    readoutLabel.textContent = content.label;
-    readout.textContent = content.text;
+  systemNodes.forEach((item) => {
+    const isActive = item === node;
+    item.classList.toggle("is-active", isActive);
+    item.setAttribute("aria-pressed", String(isActive));
   });
+
+  if (systemMap) systemMap.dataset.activeLayer = layer;
+  if (readoutLabel) readoutLabel.textContent = content.label;
+  if (readout) readout.textContent = content.text;
+  if (runtimeIndex) runtimeIndex.textContent = content.index;
+  if (runtimeLayer) runtimeLayer.textContent = content.runtimeLayer;
+  fieldNodes.forEach((fieldNode) => {
+    fieldNode.classList.toggle("is-active", fieldNode.dataset.fieldLayer === layer);
+  });
+
+  if (!animate || !systemReadout) return;
+  window.clearTimeout(systemReadoutTimer);
+  window.cancelAnimationFrame(systemReadoutFrame);
+  systemReadout.classList.remove("is-refreshing");
+  systemReadoutFrame = window.requestAnimationFrame(() => {
+    systemReadout.classList.add("is-refreshing");
+    systemReadoutTimer = window.setTimeout(() => {
+      systemReadout.classList.remove("is-refreshing");
+    }, 540);
+  });
+}
+
+const initiallyActiveSystemNode = Array.from(systemNodes).find((node) =>
+  node.classList.contains("is-active")
+);
+
+if (initiallyActiveSystemNode) {
+  activateSystemLayer(initiallyActiveSystemNode, false);
+}
+
+systemNodes.forEach((node) => {
+  node.addEventListener("click", () => activateSystemLayer(node));
 });
+
+if (artworkFigures.length) {
+  if ("IntersectionObserver" in window) {
+    const artworkObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("art-in-view", entry.isIntersecting);
+        });
+      },
+      { rootMargin: "10% 0px", threshold: 0.05 }
+    );
+
+    artworkFigures.forEach((figure) => artworkObserver.observe(figure));
+  } else {
+    artworkFigures.forEach((figure) => figure.classList.add("art-in-view"));
+  }
+}
+
+if (motionToggles.length) {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let userPaused = false;
+
+  function syncMotionControls() {
+    const motionIsPaused = userPaused || reducedMotion.matches || document.hidden;
+    document.documentElement.classList.toggle("motion-paused", motionIsPaused);
+
+    motionToggles.forEach((toggle) => {
+      toggle.hidden = false;
+      toggle.disabled = reducedMotion.matches;
+      toggle.setAttribute("aria-pressed", String(userPaused));
+      toggle.textContent = reducedMotion.matches
+        ? "Motion reduced"
+        : userPaused
+          ? "Resume motion"
+          : "Pause motion";
+    });
+  }
+
+  motionToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      userPaused = !userPaused;
+      syncMotionControls();
+    });
+  });
+
+  reducedMotion.addEventListener("change", syncMotionControls);
+  document.addEventListener("visibilitychange", syncMotionControls);
+  syncMotionControls();
+}

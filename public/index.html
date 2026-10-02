@@ -11,6 +11,7 @@
     <title>SENTIA — Persistent artificial cognition</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="visual-system.css?v=8fd27b2e6fac" />
   </head>
 
   <body>
@@ -66,16 +67,51 @@
           </div>
         </div>
 
-        <div class="hero-visual hero-artwork" aria-label="Orbital research diagram showing persistent cognition" role="img">
-          <img
-            class="hero-artwork-image"
-            src="assets/hero-orbital.png"
-            alt=""
-            width="839"
-            height="700"
-            decoding="async"
-          />
-        </div>
+        <figure class="hero-visual hero-artwork" data-artwork>
+          <div class="hero-field-stage">
+            <div class="hero-field-art">
+              <img
+                class="hero-artwork-image art-motion"
+                src="assets/home-cognitive-landscape-v2.png"
+                alt="Memory traces flow into an open, S-shaped cognitive structure, then branch into possible actions. A return path represents experience becoming new memory."
+                width="1672"
+                height="941"
+                fetchpriority="high"
+                decoding="async"
+              />
+              <svg class="hero-field-flow" viewBox="0 0 1672 941" fill="none" aria-hidden="true">
+                <path
+                  class="field-trace art-motion"
+                  pathLength="1"
+                  d="M 171 660 C 310 548 486 752 727 620 S 932 423 1055 482 C 1125 515 1164 330 1303 284 S 1435 218 1510 175"
+                />
+                <path
+                  class="field-trace field-trace-return art-motion"
+                  pathLength="1"
+                  d="M 1394 424 C 1400 550 1205 728 1060 754 S 738 837 541 763 S 301 719 189 707"
+                />
+              </svg>
+            </div>
+            <div class="hero-field-notes">
+              <div class="hero-field-note field-memory">
+                <span>Memory</span>
+                <p>A retained past</p>
+              </div>
+              <div class="hero-field-note field-identity">
+                <span>Identity</span>
+                <p>A continuing self</p>
+              </div>
+              <div class="hero-field-note field-agency">
+                <span>Agency</span>
+                <p>A chosen next step</p>
+              </div>
+            </div>
+          </div>
+          <figcaption class="hero-project-caption">
+            <p><span>AELIA</span> Exploring a mind that carries its history forward.</p>
+            <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" hidden>Pause motion</button>
+          </figcaption>
+        </figure>
       </section>
 
       <div class="signal-strip" aria-label="SENTIA focus areas">
@@ -130,44 +166,53 @@
           </p>
         </div>
 
-        <div class="system-map">
-          <div class="system-orbit" aria-hidden="true">
-            <span class="map-line map-line-one"></span>
-            <span class="map-line map-line-two"></span>
-            <span class="map-line map-line-three"></span>
-            <span class="map-line map-line-four"></span>
-            <span class="map-particle particle-one"></span>
-            <span class="map-particle particle-two"></span>
-            <span class="map-particle particle-three"></span>
-            <div class="system-core">
-              <span class="system-core-index">S / 01</span>
-              <strong>cognitive<br />runtime</strong>
-              <span class="system-core-status"><i></i> loop active</span>
+        <div class="system-map" data-active-layer="memory">
+          <figure class="system-orbit" data-artwork>
+            <div class="runtime-figure-heading">
+              <span>Cognitive field</span>
+              <span>Fig. 02</span>
             </div>
-          </div>
+            <div class="cognition-art-stage" aria-hidden="true">
+              <img class="cognition-art art-motion" src="assets/cognition-field.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+              <div class="field-registration"></div>
+              <span class="field-node is-active" data-field-layer="memory">01</span>
+              <span class="field-node" data-field-layer="belief">02</span>
+              <span class="field-node" data-field-layer="state">03</span>
+              <span class="field-node" data-field-layer="social">04</span>
+              <span class="field-node" data-field-layer="decision">05</span>
+              <span class="field-axis-label">A continuous process</span>
+            </div>
+            <figcaption class="runtime-caption">
+              <span class="runtime-selection">
+                <span data-runtime-index>01</span>
+                <span data-runtime-layer>Memory / identity</span>
+              </span>
+              <button class="motion-toggle" type="button" data-motion-toggle hidden>Pause motion</button>
+            </figcaption>
+          </figure>
 
           <div class="system-nodes" aria-label="Cognitive runtime layers">
-            <button class="system-node node-memory is-active" type="button" data-layer="memory">
+            <button class="system-node node-memory is-active" type="button" data-layer="memory" aria-pressed="true">
               <span class="node-index">01</span>
               <span class="node-name">Memory &amp; identity</span>
               <span class="node-symbol">↗</span>
             </button>
-            <button class="system-node node-belief" type="button" data-layer="belief">
+            <button class="system-node node-belief" type="button" data-layer="belief" aria-pressed="false">
               <span class="node-index">02</span>
               <span class="node-name">World &amp; belief</span>
               <span class="node-symbol">↗</span>
             </button>
-            <button class="system-node node-state" type="button" data-layer="state">
+            <button class="system-node node-state" type="button" data-layer="state" aria-pressed="false">
               <span class="node-index">03</span>
               <span class="node-name">Internal state</span>
               <span class="node-symbol">↗</span>
             </button>
-            <button class="system-node node-social" type="button" data-layer="social">
+            <button class="system-node node-social" type="button" data-layer="social" aria-pressed="false">
               <span class="node-index">04</span>
               <span class="node-name">Social model</span>
               <span class="node-symbol">↗</span>
             </button>
-            <button class="system-node node-decision" type="button" data-layer="decision">
+            <button class="system-node node-decision" type="button" data-layer="decision" aria-pressed="false">
               <span class="node-index">05</span>
               <span class="node-name">Decision &amp; action</span>
               <span class="node-symbol">↗</span>
@@ -192,7 +237,7 @@
           <span>Questions with no default answer</span>
         </div>
         <div class="directions-intro">
-          <h2 id="directions-title">Five questions<br /><em>shape the work.</em></h2>
+          <h2 id="directions-title">Six questions<br /><em>shape the work.</em></h2>
           <p>
             The work sits between cognitive science, psychology, systems design,
             and machine learning.
@@ -260,7 +305,7 @@
           </div>
         </div>
         <div class="field-note-mark" aria-hidden="true">
-          <span>?</span>
+          <span>“</span>
           <small>SPEAK<br />POLICY</small>
         </div>
       </section>
@@ -285,26 +330,16 @@
               <span aria-hidden="true">↗</span>
             </a>
           </div>
-          <div class="aelia-loop-visual" aria-label="AELIA cognitive life loop" role="img">
-            <span class="loop-environment environment-top">Environment</span>
-            <div class="loop-track">
-              <span>Perceive</span>
-              <i>↓</i>
-              <span>Interpret</span>
-              <i>↓</i>
-              <span>Remember</span>
-              <i>↓</i>
-              <span>Update state</span>
-              <i>↓</i>
-              <span>Decide</span>
-              <i>↓</i>
-              <span>Act</span>
-              <i>↓</i>
-              <span>Learn</span>
+          <figure class="specimen-figure aelia-specimen" data-artwork>
+            <div class="figure-topline"><span>AELIA / Evolving identity</span><span>Fig. 03</span></div>
+            <div class="specimen-stage">
+              <img class="specimen-art art-motion" src="assets/aelia-emergence.png" alt="A layered luminous membrane, an abstract study of an evolving artificial identity" width="1254" height="1254" loading="lazy" decoding="async" />
+              <span class="specimen-callout callout-memory" aria-hidden="true">History</span>
+              <span class="specimen-callout callout-agency" aria-hidden="true">Agency</span>
+              <span class="specimen-measure" aria-hidden="true"></span>
             </div>
-            <span class="loop-environment environment-bottom">Continue ↺</span>
-            <img class="aelia-loop-mark" src="sentia-mark.svg" alt="" />
-          </div>
+            <figcaption class="figure-caption">Perceive · Interpret · Remember · Update state · Decide · Act · Learn ↺</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -326,13 +361,11 @@
               <span aria-hidden="true">↗</span>
             </a>
           </div>
-          <div class="community-visual" aria-hidden="true">
-            <span class="community-rule rule-horizontal"></span>
-            <span class="community-rule rule-vertical"></span>
+          <div class="community-visual" data-artwork aria-hidden="true">
+            <img class="relational-art art-motion" src="assets/relational-field.png" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
             <span class="community-caption caption-one">SHARE / TEST / REPEAT</span>
-            <span class="community-caption caption-two">OPEN LOOP / 004</span>
+            <span class="community-caption caption-two">Fig. 04 / Shared inquiry</span>
             <span class="community-index">HANOI / VN<br />RESEARCH LOOP</span>
-            <img class="community-core" src="sentia-mark.svg" alt="" />
           </div>
         </div>
       </section>
@@ -350,7 +383,7 @@
       <div class="footer-bottom">
         <span>© <span data-year></span> SENTIA LAB</span>
         <span>MEMORY / IDENTITY / AUTONOMY</span>
-        <span>MADE FOR THE LONG NOW</span>
+        <button class="motion-toggle" type="button" data-motion-toggle hidden>Pause motion</button>
       </div>
     </footer>
 
